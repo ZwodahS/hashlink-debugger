@@ -83,6 +83,12 @@ class Main {
 			}
 		}
 
+		while (args[0] == "--commands" ) {
+			args.shift();
+			var file = args.shift();
+			args = StringTools.trim(sys.io.File.getContent(file)).split("\n").map(StringTools.trim).concat(args);
+		}
+
 		if( pid == null ) {
 			var args = ["--debug", "" + debugPort, "--debug-wait", file].concat(hlArgs);
 			#if nodejs
